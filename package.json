@@ -1,5 +1,5 @@
 {
-  "name": "chromeextension-beta",
+  "name": "yt-beta",
   "version": "1.0.0",
   "description": "darkmode for youtube",
   "main": "index.js",
