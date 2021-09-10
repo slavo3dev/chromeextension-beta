@@ -2,5 +2,25 @@
 	"name": "yt-beta",
 	"version": "0.0.1",
 	"description": "YouTube Extension",
-	"manifest_version": 2
+	"manifest_version": 2,
+	"background": {
+		"scripts": ["background-script.js"],
+		"presistant": false
+	},
+	"content_scripts": [
+		{
+			"js": ["content-script.js"],
+			"matches": ["https://*.youtube.com/*"]
+		}
+	],
+	"permissions": ["bookmarks"],
+	"icons": {
+		"16": "notes.png",
+		"48": "notes_48.png",
+		"128": "notes_128.png"
+	},
+	"browser_action": {
+		"default_title": "Created by Prototype.Next",
+		"default_popup": "popup.html"
+	}
 }
