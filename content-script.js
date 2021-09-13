@@ -4,6 +4,7 @@ window.onload = () => {
     const button = document.createElement('button');
     const submitBtn = document.createElement('button')
 
+    // Button notes 
     button.id = "notes";
     button.textContent = "Add Notes"
 
@@ -12,26 +13,30 @@ window.onload = () => {
 
     label.style.cssText = "color: white; font-size: 24px";
     label.textContent = "Add Notes"
-
+    
+    // Text Input 
     textarea.id = "textArea"
     textarea.style.cssText = "font-size:12px; width: 99%; border: 1px solid #888; height: 10%"
 
 
-   
-
-    const input = document.createElement("input")
-    input.type = 'checkbox'
-    input.id = 'nodeSetting'
+    const checkboxInput = document.createElement("input")
+    checkboxInput.type = 'checkbox'
+    checkboxInput.id = 'noteSetting'
 
 
-     document.getElementById("end").prepend(button, input)
+     document.getElementById("end").prepend(button, checkboxInput, 'Auto Apply?')
 
     button.addEventListener("click",() => {
-        
         enableNotes(label,textarea,submitBtn);
     })
+
+    checkboxInput.addEventListener("click", () => storeSetting())
     
     submitBtn.addEventListener("click", () => saveNote(textarea))
+}
+
+function storeSetting() {
+    const isEnabled = document.getElementById("noteSetting").checked
 }
 
 
