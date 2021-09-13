@@ -24,19 +24,46 @@ window.onload = () => {
     checkboxInput.id = 'noteSetting'
 
 
-     document.getElementById("end").prepend(button, checkboxInput, 'Auto Apply?')
+    document.getElementById("end").prepend(button, checkboxInput, 'Auto Apply?')
+    button.addEventListener("click",() => { enableNotes(label,textarea,submitBtn); })
 
-    button.addEventListener("click",() => {
-        enableNotes(label,textarea,submitBtn);
-    })
-
-    checkboxInput.addEventListener("click", () => storeSetting())
+    checkboxInput.addEventListener("click",() => storeSetting())
+    
+    checkSetting(label,textarea,submitBtn)
     
     submitBtn.addEventListener("click", () => saveNote(textarea))
 }
 
+function checkSetting(label,textarea,submitBtn) {
+    chrome.storage.local.get(['enabled'],(result) => {
+        const isEnabled = result.enabled
+        console.log("Check Setting: ", isEnabled)
+        document.getElementById("noteSetting").checked = isEnabled
+
+
+        isEnabled ? (
+          enableNotes(label,textarea,submitBtn)
+        ) : null
+    })
+
+    
+}
+
+
 function storeSetting() {
     const isEnabled = document.getElementById("noteSetting").checked
+
+    const setting = {enabled: isEnabled}
+    
+    chrome.storage.local.set(setting,() => {
+        console.log("Stored: ", setting)
+    })
+
+    /* to stor data in sync storage per account 
+    chrome.storage.sync.set(setting,() => {
+        console.log("Stored: ", setting)
+    })
+    */
 }
 
 
