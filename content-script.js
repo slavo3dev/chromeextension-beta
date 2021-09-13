@@ -17,7 +17,14 @@ window.onload = () => {
     textarea.style.cssText = "font-size:12px; width: 99%; border: 1px solid #888; height: 10%"
 
 
-    document.getElementById("end").prepend(button)
+   
+
+    const input = document.createElement("input")
+    input.type = 'checkbox'
+    input.id = 'nodeSetting'
+
+
+     document.getElementById("end").prepend(button, input)
 
     button.addEventListener("click",() => {
         

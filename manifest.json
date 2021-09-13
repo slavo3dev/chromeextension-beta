@@ -13,7 +13,7 @@
 			"matches": ["https://*.youtube.com/*"]
 		}
 	],
-	"permissions": ["bookmarks"],
+	"permissions": ["bookmarks", "storage"],
 	"icons": {
 		"16": "notes.png",
 		"48": "notes_48.png",
